@@ -21,8 +21,9 @@ import ReactionModal from "../Reaction/ReactionModal";
 import EmojiPicker from "emoji-picker-react";
 import Icons from "../../themes/Icons";
 import { setSticker } from "../../redux/stickerSlice";
-import stickerApi from "../../apis/StickerApi";
+// import stickerApi from "../../apis/StickerApi";
 import { formatConversation } from "../../utils/formatConverstation";
+import stickerApi from "../../apis/stickerApi";
 
 const { Text } = Typography;
 
