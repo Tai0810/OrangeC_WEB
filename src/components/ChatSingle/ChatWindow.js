@@ -52,6 +52,7 @@ export default function ChatWindow() {
   const [showReactionIndex, setShowReactionIndex] = useState(-1);
   const [openStiker, setOpenSticker] = useState(false);
   const [selectedPack, setSelectedPack] = useState(stickerData[0]);
+  const conversationRef = useRef(conversation);
 
   const formatTime = (time) => {
     const options = { hour: "numeric", minute: "numeric" };
@@ -73,6 +74,7 @@ export default function ChatWindow() {
   }, [dispatch]);
 
   useEffect(() => {
+    conversationRef.current=conversation;
     getLastMessage();
   }, [conversationId]);
 
@@ -243,7 +245,7 @@ export default function ChatWindow() {
 
   // Thu hồi tin nhắn
   const recallMessage = (messageId) => {
-    console.log("recall message", itemSelected);
+    // console.log("recall message", itemSelected);
     connectSocket.emit("recall message", {
       messageId: messageId,
       conversationId: conversation._id,
@@ -252,7 +254,7 @@ export default function ChatWindow() {
   };
 
   const deleteMessage = (messageId) => {
-    console.log("deleting", itemSelected);
+    // console.log("deleting", itemSelected);
     connectSocket.emit("delete message", {
       messageId: messageId,
       conversationId: conversation._id,
@@ -324,7 +326,7 @@ export default function ChatWindow() {
   // Update data từ Socket gửi về
   useEffect(() => {
     connectSocket.on("chat message", (msg) => {
-      if (msg.conversationId === conversation._id) {
+      if (msg.conversationId === conversationRef.current._id) {
         console.log("new message", msg);
         setMessages((preMessage) => [...preMessage, msg]);
       }
@@ -697,19 +699,15 @@ export default function ChatWindow() {
 
           <Button
             style={{ background: "transparent" }}
-            onClick={() =>
+            onClick={() => {
               handleActionClick(() => {
                 console.log("itemSelected", itemSelected);
-                // setMsgReply(itemSelected);
-                // const repSelected = JSON.parse(localStorage.getItem('itemSelected'));
-                // setMsgReply(x);
-                // console.log("rep", x);
                 replyMessage(itemSelected);
                 setRepSelected(itemSelected);
                 console.log("repSelected", repSelected);
-                // setItemSelected(itemSelected);
-              })
-            }
+              });
+              setItemSelected(null);
+            }}
           >
             <FaReply style={{ fontSize: "20px", color: "#F24E1E" }} />
           </Button>
@@ -735,10 +733,13 @@ export default function ChatWindow() {
             />
           </Button>
         </div>
-        <ForwardModal
+        {itemSelected!= null &&  
+          <ForwardModal
           isOpen={isOpenShare}
           toggleForwardModal={toggleForwardModal}
         />
+        }
+        
       </div>
     );
   };
@@ -756,10 +757,10 @@ export default function ChatWindow() {
   // const repSelected = JSON.parse(localStorage.getItem('itemSelected'));
   const [repSelected, setRepSelected] = useState(itemSelected);
 
-  const [isOpenReaction, setIsOpenReaction] = useState(false);
-  const toggleReactionModal = () => {
-    setIsOpenReaction(!isOpenReaction);
-  };
+  // const [isOpenReaction, setIsOpenReaction] = useState(false);
+  // const toggleReactionModal = () => {
+  //   setIsOpenReaction(!isOpenReaction);
+  // };
 
   return (
     <div
@@ -953,11 +954,11 @@ export default function ChatWindow() {
                             border: "hidden",
                             height: "100%",
                           }}
-                          onClick={() => {
-                            setItemSelected(item);
-                            // console.log("Itemchat:", item);
-                            toggleReactionModal();
-                          }}
+                          // onClick={() => {
+                          //   setItemSelected(item);
+                          //   console.log("Itemchat:", item);
+                          //   toggleReactionModal();
+                          // }}
                         >
                           {item?.reply !== null && item.isReCall === false && (
                             <div
@@ -1164,11 +1165,11 @@ export default function ChatWindow() {
                           </Text>
                         </Button>
                         <MessageWithIcons itemSelected={item} />
-                        <ReactionModal
+                        {/* <ReactionModal
                           isOpen={isOpenReaction}
                           toggleReactionModal={toggleReactionModal}
                           reactionMsg={item}
-                        />
+                        /> */}
                       </div>
                     );
                   }
@@ -1201,11 +1202,11 @@ export default function ChatWindow() {
                                 justifyContent: "flex-start",
                               }
                         }
-                        onClick={() => {
-                          setItemSelected(item);
-                          // console.log("Itemchat:", item);
-                          toggleReactionModal();
-                        }}
+                        // onClick={() => {
+                        //   setItemSelected(item);
+                        //   console.log("Itemchat:", item);
+                        //   toggleReactionModal();
+                        // }}
                       >
                         {item?.senderId !== userId && (
                           <src
@@ -1442,11 +1443,11 @@ export default function ChatWindow() {
                           )}
                         </Button>
                         <MessageWithIcons itemSelected={item} />
-                        <ReactionModal
+                        {/* <ReactionModal
                           isOpen={isOpenReaction}
                           toggleReactionModal={toggleReactionModal}
                           reactionMsg={item}
-                        />
+                        /> */}
                       </div>
                     );
                   }
@@ -1480,11 +1481,11 @@ export default function ChatWindow() {
                                 justifyContent: "flex-start",
                               }
                         }
-                        onClick={() => {
-                          setItemSelected(item);
-                          // console.log("Itemchat:", item);
-                          toggleReactionModal();
-                        }}
+                        // onClick={() => {
+                        //   setItemSelected(item);
+                        //   console.log("Itemchat:", item);
+                        //   toggleReactionModal();
+                        // }}
                       >
                         {item?.senderId !== userId && (
                           <src
@@ -1585,7 +1586,7 @@ export default function ChatWindow() {
                             <div>
                               <img
                                 src={item.urlType[0]}
-                                alt="Sticker"
+                                alt="Hình ảnh"
                                 style={{
                                   width: "100%",
                                   height: "100%",
@@ -1721,11 +1722,11 @@ export default function ChatWindow() {
                           )}
                         </Button>
                         <MessageWithIcons itemSelected={item} />
-                        <ReactionModal
+                        {/* <ReactionModal
                           isOpen={isOpenReaction}
                           toggleReactionModal={toggleReactionModal}
                           reactionMsg={item}
-                        />
+                        /> */}
                       </div>
                     );
                   }
@@ -1758,11 +1759,11 @@ export default function ChatWindow() {
                                 justifyContent: "flex-start",
                               }
                         }
-                        onClick={() => {
-                          setItemSelected(item);
-                          // console.log("Itemchat:", item);
-                          toggleReactionModal();
-                        }}
+                        // onClick={() => {
+                        //   setItemSelected(item);
+                        //   console.log("Itemchat:", item);
+                        //   toggleReactionModal();
+                        // }}
                       >
                         {item?.senderId._id !== userId && (
                           <src
@@ -2047,11 +2048,11 @@ export default function ChatWindow() {
                           )}
                         </Button>
                         <MessageWithIcons itemSelected={item} />
-                        <ReactionModal
+                        {/* <ReactionModal
                           isOpen={isOpenReaction}
                           toggleReactionModal={toggleReactionModal}
                           reactionMsg={item}
-                        />
+                        /> */}
                       </div>
                     );
                   }
@@ -2084,11 +2085,11 @@ export default function ChatWindow() {
                                 justifyContent: "flex-start",
                               }
                         }
-                        onClick={() => {
-                          setItemSelected(item);
-                          // console.log("Itemchat:", item);
-                          toggleReactionModal();
-                        }}
+                        // onClick={() => {
+                        //   setItemSelected(item);
+                        //   console.log("Itemchat:", item);
+                        //   toggleReactionModal();
+                        // }}
                       >
                         {item?.senderId._id !== userId && (
                           <src
@@ -2325,11 +2326,11 @@ export default function ChatWindow() {
                           )}
                         </Button>
                         <MessageWithIcons itemSelected={item} />
-                        <ReactionModal
+                        {/* <ReactionModal
                           isOpen={isOpenReaction}
                           toggleReactionModal={toggleReactionModal}
                           reactionMsg={item}
-                        />
+                        /> */}
                       </div>
                     );
                   }
@@ -2390,7 +2391,10 @@ export default function ChatWindow() {
                 >
                   <button
                     // onClick={() => setItemSelected(null)}
-                    onClick={() => setRepSelected(null)}
+                    onClick={() => {
+                      setRepSelected(null);
+                      setItemSelected(null);
+                    }}
                     style={{
                       width: "20px",
                       height: "20px",

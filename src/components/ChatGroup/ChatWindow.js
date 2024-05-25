@@ -42,7 +42,7 @@ export default function ChatWindow() {
   const stickerData = useSelector((state) => state.sticker.stickers);
   const user = useSelector((state) => state.authLogin.user);
   const conversation1 = useSelector((state) => state.conversation.conversation);
-  console.log("conver", conversation1);
+  // console.log("conver", conversation1);
   const receiverId = conversation1?.members?.filter(
     (member) => member._id !== user._id
   );
@@ -59,6 +59,7 @@ export default function ChatWindow() {
   const [itemSelected, setItemSelected] = useState(null);
   const [reactionMsg, setReactionMsg] = useState({});
   const dispatch = useDispatch();
+  const conversationRef = useRef(conversation1);
 
   useEffect(() => {
     async function fetchStickers() {
@@ -76,7 +77,7 @@ export default function ChatWindow() {
 
   useEffect(() => {
     getLastMessage();
-    console.log("fetch message");
+    // console.log("fetch message");
   }, [conversationId]);
 
   const toggleAddMemberModal = () => {
@@ -101,8 +102,9 @@ export default function ChatWindow() {
   };
 
   useEffect(() => {
+    conversationRef.current=conversation1;
     getLastMessage();
-    console.log("fetch message");
+    // console.log("fetch message");
   }, [conversationId]);
 
   const getLastMessage = async () => {
@@ -113,6 +115,15 @@ export default function ChatWindow() {
       setMessages(response.data);
     }
   };
+
+  useEffect(() => {
+    // Lấy phần tử div bên trong
+    const scrollElement = scrollRef.current;
+    // Nếu có phần tử và đã có tin nhắn mới, cuộn xuống dưới cùng của phần tử
+    if (scrollElement && messages?.length > 0) {
+      scrollElement.scrollTop = scrollElement.scrollHeight;
+    }
+  }, [messages]);
 
   const handleInputText = (text) => {
     setInputMessage(text);
@@ -261,7 +272,6 @@ export default function ChatWindow() {
 
   // Thu hồi tin nhắn
   const recallMessage = (messageId) => {
-    console.log("recall message", itemSelected);
     connectSocket.emit("recall message", {
       messageId: messageId,
       conversationId: conversation1._id,
@@ -270,7 +280,6 @@ export default function ChatWindow() {
   };
 
   const deleteMessage = (messageId) => {
-    console.log("deleting", itemSelected);
     connectSocket.emit("delete message", {
       messageId: messageId,
       conversationId: conversation1._id,
@@ -282,7 +291,6 @@ export default function ChatWindow() {
   // Xử lý tin nhắn reply
   const replyMessage = (message) => {
     setItemSelected(message);
-    console.log("Rep mess:", message);
   };
 
   // Reaction message
@@ -328,7 +336,7 @@ export default function ChatWindow() {
     // console.log("connect", user._id);
 
     connectSocket.on("chat message", (msg) => {
-      if (msg.conversationId === conversation1._id) {
+      if (msg.conversationId === conversationRef.current._id) {
         console.log("new message", msg);
         setMessages((preMessage) => [...preMessage, msg]);
       }
@@ -837,7 +845,6 @@ export default function ChatWindow() {
             toggleIcons();
             setItemSelected(itemSelected);
             localStorage.setItem("itemSelected", JSON.stringify(itemSelected));
-            // console.log("MSSelected:", itemSelected);
           }}
         />
         <div
@@ -860,18 +867,13 @@ export default function ChatWindow() {
 
           <Button
             style={{ background: "transparent" }}
-            onClick={() =>
+            onClick={() => {
               handleActionClick(() => {
-                console.log("itemSelected", itemSelected);
-                // setMsgReply(itemSelected);
-                // const repSelected = JSON.parse(localStorage.getItem('itemSelected'));
-                // setMsgReply(x);
-                // console.log("rep", x);
                 replyMessage(itemSelected);
                 setRepSelected(itemSelected);
-                console.log("repSelected", repSelected);
-                // setItemSelected(itemSelected);
-              })
+              });
+              setItemSelected(null);
+            }
             }
           >
             <FaReply style={{ fontSize: "20px", color: "#F24E1E" }} />
@@ -898,10 +900,10 @@ export default function ChatWindow() {
             />
           </Button>
         </div>
-        <ForwardModal
+        {/* <ForwardModal
           isOpen={isOpenShare}
           toggleForwardModal={toggleForwardModal}
-        />
+        /> */}
       </div>
     );
   };

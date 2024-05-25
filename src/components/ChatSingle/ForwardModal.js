@@ -41,7 +41,11 @@ export default function ForwardModal({ isOpen, toggleForwardModal }) {
     //     }
     // }, [keyword]);
     useEffect(() => {
-        fetchData();
+        // console.log("itemfor",itemSelected);
+        if(itemSelected != null){
+            fetchData();
+        }
+        
     }, []);
 
     const fetchData = async () => {
