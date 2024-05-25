@@ -37,6 +37,7 @@ export default function ChatWindow() {
   const conversationId = useSelector(
     (state) => state.current.conversationReload
   );
+  
 
   const stickerData = useSelector((state) => state.sticker.stickers);
   const userId = user._id;
