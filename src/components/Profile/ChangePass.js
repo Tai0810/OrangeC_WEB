@@ -40,7 +40,7 @@ export default function ChangePass() {
   return (
     <div style={{ background: '#1D1D1D', width: '100vw', height: '100vh' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Link to='/welcome' style={{ fontSize: 17, fontWeight: 800, color: '#F24E1E', padding: 50, textDecoration: 'none' }}>OrangeC</Link>
+        <Text style={{ fontSize: 17, fontWeight: 800, color: '#F24E1E', padding: 50, textDecoration: 'none' }}>OrangeC</Text>
         <Link to='/profile' style={{ fontSize: 17, fontWeight: 800, color: '#FFF', padding: 50, textDecoration: 'none' }}>Quay lại</Link>
       </div>
 

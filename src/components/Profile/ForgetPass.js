@@ -62,8 +62,8 @@ export default function ForgetPass() {
   return (
     <div style={{ background: '#1D1D1D', width: '100vw', height: '100vh' }}>
       <header style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Link to='/welcome' style={{ fontSize: 17, fontWeight: 800, color: '#F24E1E', padding: 50, textDecoration: 'none' }}>OrangeC</Link>
-        <Link to='/' style={{ fontSize: 17, fontWeight: 800, color: '#FFF', padding: 50, textDecoration: 'none' }}>Đăng nhập</Link>
+        <Link to='/home' style={{ fontSize: 17, fontWeight: 800, color: '#F24E1E', padding: 50, textDecoration: 'none' }}>OrangeC</Link>
+        <Link to='/login' style={{ fontSize: 17, fontWeight: 800, color: '#FFF', padding: 50, textDecoration: 'none' }}>Đăng nhập</Link>
       </header>
 
       <div style={{ padding: 80 }}>

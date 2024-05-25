@@ -52,7 +52,7 @@ export default function Login() {
     return (
         <div className='container' style={{ background: '#1D1D1D', width: '100vw', height: '100vh' }}>
             <header style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Link to='/welcome' style={{ fontSize: 17, fontWeight: 800, color: '#F24E1E', padding: 50, textDecoration: 'none' }}>OrangeC</Link>
+                <Link to='/home' style={{ fontSize: 17, fontWeight: 800, color: '#F24E1E', padding: 50, textDecoration: 'none' }}>OrangeC</Link>
                 <Link to='/register' style={{ fontSize: 17, fontWeight: 800, color: '#FFF', padding: 50, textDecoration: 'none' }}>Đăng ký</Link>
             </header>
             <body style={{ padding: 80 }}>

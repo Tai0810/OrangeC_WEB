@@ -61,7 +61,7 @@ export default function Profile() {
                                 dispatch(removeAuth());
                                 console.log('user', user);
                                 connectSocket.emit('logout', user._id);
-                                navigate("/");
+                                navigate("/home");
                                 localStorage.clear();
                                 dispatch(logout());
                               }}

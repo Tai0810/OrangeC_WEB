@@ -23,7 +23,7 @@ import Icons from "../../themes/Icons";
 import { setSticker } from "../../redux/stickerSlice";
 // import stickerApi from "../../apis/StickerApi";
 import { formatConversation } from "../../utils/formatConverstation";
-import stickerApi from "../../apis/stickerApi";
+import stickerApi from "../../apis/StickerApi";
 
 const { Text } = Typography;
 
