@@ -26,9 +26,9 @@ export default function Register() {
     try {
       const response = await authApi.checkInfo({
         email: values.email,
-       
+
       });
-     
+
       console.log('response', response);
       if (response.message === 'email') {
         alert(i18next.t('emailDaTonTai'));
@@ -61,8 +61,9 @@ export default function Register() {
   return (
     <div style={{ background: '#1D1D1D', width: '100vw', height: '100vh' }}>
       <header style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Text style={{ fontSize: 17, fontWeight: 800, color: '#F24E1E', padding: 50 }}>OrangeC</Text>
-        <Link to='/' style={{ fontSize: 17, fontWeight: 800, color: '#FFF', padding: 50 }}>Đăng nhập</Link>
+        {/* <Text style={{ fontSize: 17, fontWeight: 800, color: '#F24E1E', padding: 50 }}>OrangeC</Text> */}
+        <Link to='/welcome' style={{ fontSize: 17, fontWeight: 800, color: '#F24E1E', padding: 50, textDecoration: 'none' }}>OrangeC</Link>
+        <Link to='/' style={{ fontSize: 17, fontWeight: 800, color: '#FFF', padding: 50, textDecoration: 'none' }}>Đăng nhập</Link>
       </header>
 
       <div style={{ padding: 80 }}>

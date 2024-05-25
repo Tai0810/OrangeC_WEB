@@ -16,9 +16,9 @@ export default function Register() {
   const [countdown, setCountdown] = useState(60);
   const [isResendEnabled, setIsResendEnabled] = useState(false);
   const [txtCode, setTxtCode] = useState('');
-  const valuesRegister  = location.state?.valuesRegister;
+  const valuesRegister = location.state?.valuesRegister;
   const valueInfo = location.state?.valueInfo;
-  const code= location.state?.code;
+  const code = location.state?.code;
   const dateOfBirth = location.state?.dateOfBirth;
   const [isComfirm, setIsComfirm] = useState(false);
 
@@ -27,13 +27,13 @@ export default function Register() {
   console.log("dob", dateOfBirth);
 
   useEffect(() => {
-    if (txtCode !== '' && txtCode.length == 6) {  
+    if (txtCode !== '' && txtCode.length == 6) {
       setIsComfirm(true);
-      
+
     }
   }, [txtCode]);
 
-  
+
 
   const handleRegister = async () => {
     const userData = {
@@ -51,7 +51,7 @@ export default function Register() {
       // const response = await authApi.register({ ...userData });
       // console.log(response);
       // alert('Đăng ký thành công!');
-      
+
       navigate('/registerinf');
     } catch (error) {
       alert('err', error.message);
@@ -81,17 +81,17 @@ export default function Register() {
   return (
     <div style={{ background: '#1D1D1D', width: '100vw', height: '100vh' }}>
       <header style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Text style={{ fontSize: 17, fontWeight: 800, color: '#F24E1E', padding: 50 }}>OrangeC</Text>
-        <Link to='/' style={{ fontSize: 17, fontWeight: 800, color: '#FFF', padding: 50 }}>Đăng nhập</Link>
+        <Link to='/welcome' style={{ fontSize: 17, fontWeight: 800, color: '#F24E1E', padding: 50, textDecoration: 'none' }}>OrangeC</Link>
+        <Link to='/' style={{ fontSize: 17, fontWeight: 800, color: '#FFF', padding: 50, textDecoration:'none' }}>Đăng nhập</Link>
       </header>
 
       <body style={{ padding: 80 }}>
-        <Row justify='center' style={{width: '100%'}}>
+        <Row justify='center' style={{ width: '100%' }}>
           <Col span={14} style={{ alignItems: 'center' }}>
             <img src='./images/Hello.svg' style={{ height: '600px', width: '100%' }}></img>
           </Col>
 
-          <Col span={8} style={{width: '100%'}}>
+          <Col span={8} style={{ width: '100%' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
               <Title style={{ color: '#FFFFFF', textAlign: 'center', fontWeight: '800', fontSize: 22 }}>Mã xác nhận đã được gửi đến bạn</Title>
 
@@ -140,7 +140,7 @@ export default function Register() {
                       borderRadius: 30,
                       justifyContent: 'center',
                       alignItems: 'center',
-                      marginTop: 20 
+                      marginTop: 20
                     }}
                     onClick={() => {
                       if (isResendEnabled) {
@@ -148,7 +148,7 @@ export default function Register() {
                       }
                     }}
                   >
-                    <Text style={{display: 'flex', justifyContent: 'center', alignItems: 'center' ,color: "#FFF", fontSize: 20, fontWeight: 'bold', width: '100%' }}>
+                    <Text style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', color: "#FFF", fontSize: 20, fontWeight: 'bold', width: '100%' }}>
                       {isResendEnabled ? i18next.t('guiLai') : `${i18next.t('guiLai')} (${countdown}s)`}
                     </Text>
                   </Button>

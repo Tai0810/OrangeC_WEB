@@ -2,7 +2,7 @@ import { Button, Col, Row, Typography } from 'antd'
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import authApi from '../../apis/authApi';
-import { useDispatch ,useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import "./Login.css";
 import { setAuth } from '../../redux/authLogin'
 // import i18next from "../../i18n/i18n"
@@ -50,8 +50,8 @@ export default function Login() {
     return (
         <div className='container' style={{ background: '#1D1D1D', width: '100vw', height: '100vh' }}>
             <header style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Text style={{ fontSize: 17, fontWeight: 800, color: '#F24E1E', padding: 50 }}>OrangeC</Text>
-                <Link to='/register' style={{ fontSize: 17, fontWeight: 800, color: '#FFF', padding: 50 }}>Đăng ký</Link>
+                <Link to='/welcome' style={{ fontSize: 17, fontWeight: 800, color: '#F24E1E', padding: 50, textDecoration: 'none' }}>OrangeC</Link>
+                <Link to='/register' style={{ fontSize: 17, fontWeight: 800, color: '#FFF', padding: 50, textDecoration: 'none' }}>Đăng ký</Link>
             </header>
             <body style={{ padding: 80 }}>
                 <div className="form">

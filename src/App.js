@@ -26,6 +26,7 @@ import Admin from './components/Friend/Admin';
 import StickerManage from './components/Sticker/StickerManage';
 import OTPForgetPass from './components/Profile/OTPForgetPass';
 import NewPass from './components/Profile/NewPass';
+import Welcome from './components/Welcome/Welcome';
 
 function App() {
   const token = useSelector((state) => state.authLogin.token);
@@ -52,7 +53,7 @@ function App() {
         <Route path="/registerinf" element={<Register_Inf />} />
         <Route path='/forgotpassword' element={<ForgetPass />} />
         <Route path='/changepass' element={<ChangePass />} />
-        {/* <Route path='/welcome' element={<Welcome />} /> */}
+        <Route path='/welcome' element={<Welcome />} />
         <Route exact path="/adminlogin" element={<AdminLogin />} />
         <Route  path="/otppass" element={<OTPForgetPass />} />
         <Route  path="/newpass" element={<NewPass />} />

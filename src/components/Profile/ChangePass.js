@@ -40,8 +40,8 @@ export default function ChangePass() {
   return (
     <div style={{ background: '#1D1D1D', width: '100vw', height: '100vh' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Text style={{ fontSize: 17, fontWeight: 800, color: '#F24E1E', padding: 50 }}>OrangeC</Text>
-        <Link to='/profile' style={{ fontSize: 17, fontWeight: 800, color: '#FFF', padding: 50 }}>Quay lại</Link>
+        <Link to='/welcome' style={{ fontSize: 17, fontWeight: 800, color: '#F24E1E', padding: 50, textDecoration: 'none' }}>OrangeC</Link>
+        <Link to='/profile' style={{ fontSize: 17, fontWeight: 800, color: '#FFF', padding: 50, textDecoration: 'none' }}>Quay lại</Link>
       </div>
 
       <div>
@@ -97,24 +97,24 @@ export default function ChangePass() {
 
                       <Row justify='center'  >
                         <Col span={12} style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
-                          
-                            <Button
+
+                          <Button
                             disabled={!isValid}
                             onClick={handleSubmit}
                             style={
                               isValid ? {
-          
+
                                 width: '470px', height: '60px', fontSize: '24px', fontWeight: '800px', color: '#FFFFFF', backgroundColor: '#F24E1E', borderColor: '#F24E1E', marginTop: '50px', fontWeight: '600'
-          
+
                               } : {
-          
+
                                 width: '470px', height: '60px', fontSize: '24px', fontWeight: '800px', color: '#FFFFFF', backgroundColor: 'gray', borderColor: '#F24E1E', marginTop: '50px', fontWeight: '600'
-          
+
                               }
                             }>
-                              Xác nhận
-                            </Button>
-                         
+                            Xác nhận
+                          </Button>
+
 
 
                         </Col>

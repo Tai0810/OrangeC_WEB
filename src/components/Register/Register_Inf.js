@@ -84,8 +84,8 @@ export default function Register() {
   return (
     <div style={{ background: '#1D1D1D', width: '100vw', height: '100vh' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Text style={{ fontSize: 17, fontWeight: 800, color: '#F24E1E', padding: 50 }}>OrangeC</Text>
-        <Link to='/' style={{ fontSize: 17, fontWeight: 800, color: '#FFF', padding: 50 }}>Đăng nhập</Link>
+        <Link to='/welcome' style={{ fontSize: 17, fontWeight: 800, color: '#F24E1E', padding: 50, textDecoration: 'none' }}>OrangeC</Link>
+        <Link to='/' style={{ fontSize: 17, fontWeight: 800, color: '#FFF', padding: 50, textDecoration: 'none' }}>Đăng nhập</Link>
       </div>
 
       <div style={{ padding: 20 }}>
@@ -130,7 +130,7 @@ export default function Register() {
                   password: values.password,
                   repassword: values.repassword,
                   gender: values.gender,
-                  dateOfBirth: date ? date.toISOString() : null, 
+                  dateOfBirth: date ? date.toISOString() : null,
                   phone: values.phoneNumber,
                   image: values.gender == 'male' ? URL_IMAGE_MALE : URL_IMAGE_FEMALE,
 

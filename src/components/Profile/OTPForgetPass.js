@@ -70,8 +70,8 @@ export default function OTPForgetPass() {
   return (
     <div style={{ background: '#1D1D1D', width: '100vw', height: '100vh' }}>
       <header style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Text style={{ fontSize: 17, fontWeight: 800, color: '#F24E1E', padding: 50 }}>OrangeC</Text>
-        <Link to='/' style={{ fontSize: 17, fontWeight: 800, color: '#FFF', padding: 50 }}>{i18next.t('dangNhap')}</Link>
+        <Link to='/welcome' style={{ fontSize: 17, fontWeight: 800, color: '#F24E1E', padding: 50, textDecoration: 'none' }}>OrangeC</Link>
+        <Link to='/' style={{ fontSize: 17, fontWeight: 800, color: '#FFF', padding: 50, textDecoration: "none" }}>{i18next.t('dangNhap')}</Link>
       </header>
 
       <div style={{ padding: 80 }}>
@@ -83,10 +83,10 @@ export default function OTPForgetPass() {
           <Col span={8} style={{ width: '100%' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
               <Title style={{ color: '#FFFFFF', textAlign: 'center', fontWeight: '800', fontSize: 22 }}>
-                {i18next.t('maXacNhanDaDuocGui')}
+                {i18next.t('Đã gửi OTP đến email !')}
               </Title>
 
-              <Text style={{ color: 'white', marginTop: '30px' }}>{i18next.t('vuiLongDienMaOTP')}</Text>
+              <Text style={{ color: 'white', marginTop: '30px' }}>{i18next.t('Nhập OTP')}</Text>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
                 <input
                   name='verifi'

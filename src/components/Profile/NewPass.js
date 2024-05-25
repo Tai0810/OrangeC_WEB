@@ -20,7 +20,7 @@ export default function NewPass() {
       });
       if (response.message === 'ok') {
         alert(i18next.t('doiMatKhauThanhCong'));
-        
+
         navigate("/");
       } else {
         alert(i18next.t('doiMatKhauThatBai'));
@@ -34,8 +34,8 @@ export default function NewPass() {
   return (
     <div style={{ background: '#1D1D1D', width: '100vw', height: '100vh' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Text style={{ fontSize: 17, fontWeight: 800, color: '#F24E1E', padding: 50 }}>OrangeC</Text>
-        <Link to='/' style={{ fontSize: 17, fontWeight: 800, color: '#FFF', padding: 50 }}>{i18next.t('quayLai')}</Link>
+        <Link to='/welcome' style={{ fontSize: 17, fontWeight: 800, color: '#F24E1E', padding: 50, textDecoration: 'none' }}>OrangeC</Link>
+        <Link to='/' style={{ fontSize: 17, fontWeight: 800, color: '#FFF', padding: 50, textDecoration: 'none' }}>{i18next.t('Quay lại')}</Link>
       </div>
 
       <div style={{ padding: 80 }}>
@@ -61,7 +61,7 @@ export default function NewPass() {
                   <input
                     name='password'
                     type='password'
-                    placeholder={i18next.t('matKhauMoi')}
+                    placeholder={i18next.t('Mật khẩu mới')}
                     style={{ backgroundColor: '#2E2E2E', width: '60%', height: '60px', borderRadius: '10px', marginTop: '30px', fontSize: '18px', padding: '15px', color: '#FFF' }}
                     onChange={handleChange('password')}
                     onBlur={handleBlur('password')}
@@ -72,7 +72,7 @@ export default function NewPass() {
                   <input
                     name='repassword'
                     type='password'
-                    placeholder={i18next.t('nhapLaiMatKhauMoi')}
+                    placeholder={i18next.t('Nhập lại mật khẩu mới')}
                     style={{ backgroundColor: '#2E2E2E', width: '60%', height: '60px', borderRadius: '10px', marginTop: '30px', fontSize: '18px', padding: '15px', color: '#FFF' }}
                     onChange={handleChange('repassword')}
                     onBlur={handleBlur('repassword')}
@@ -86,25 +86,25 @@ export default function NewPass() {
                     style={
                       isValid
                         ? {
-                            width: '470px',
-                            height: '60px',
-                            fontSize: '24px',
-                            color: '#FFFFFF',
-                            backgroundColor: '#F24E1E',
-                            borderColor: '#F24E1E',
-                            marginTop: '50px',
-                            fontWeight: '600',
-                          }
+                          width: '470px',
+                          height: '60px',
+                          fontSize: '24px',
+                          color: '#FFFFFF',
+                          backgroundColor: '#F24E1E',
+                          borderColor: '#F24E1E',
+                          marginTop: '50px',
+                          fontWeight: '600',
+                        }
                         : {
-                            width: '470px',
-                            height: '60px',
-                            fontSize: '24px',
-                            color: '#FFFFFF',
-                            backgroundColor: 'gray',
-                            borderColor: '#F24E1E',
-                            marginTop: '50px',
-                            fontWeight: '600',
-                          }
+                          width: '470px',
+                          height: '60px',
+                          fontSize: '24px',
+                          color: '#FFFFFF',
+                          backgroundColor: 'gray',
+                          borderColor: '#F24E1E',
+                          marginTop: '50px',
+                          fontWeight: '600',
+                        }
                     }
                   >
                     {i18next.t('xacNhan')}
